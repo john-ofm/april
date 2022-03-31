@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+    <body>
+<h1>Random Word Generator</h1>
+
+<label id="lbltipAddedComment">test</label>
+
+<FORM NAME="WordForm">  
+<INPUT TYPE=TEXT NAME="WordBox" id="wordbox"><BR>
+<INPUT TYPE=BUTTON VALUE="Generate" onClick="PickRandomWord(document.WordForm);" id="button">
+</FORM>
+
+<p id="demo"></p>
+<script>
+var NumberOfWords = 89
+var NumberOfAdWords = 53
+
+var words = new BuildArray(NumberOfWords)
+var wordsAd = new BuildArray(NumberOfWords)
+
+// Use the following variables to 
+// define your random words:
+words[1] = "grandchild"
+words[2] = "flugelhorn"
+words[3] = "mythologer"
+words[4] = "technician"
+words[5] = "cowpuncher"
+words[6] = "wunderkind"
+words[7] = "jabberwock"
+words[8] = "pawnbroker"
+words[9] = "suggestion"
+words[10] = "sir"
+words[11] = "professor"
+words[12] = "director"
+words[13] = "buyer"
+words[14] = "error"
+words[15] = "writer"
+words[16] = "grandmother"
+words[17] = "winner"
+words[18] = "idea"
+words[19] = "player"
+words[20] = "stranger"
+words[21] = "customer"
+words[22] = "teacher"
+words[23] = "flibbertigibbet"
+words[24] = "borborygm"
+words[25] = "malarkey"
+words[26] = "ratoon"
+words[27] = "boustrophedon"
+words[28] = "bowyang"
+words[29] = "snickersnee"
+words[30] = "goombah"
+words[31] = "hobbledehoy"
+words[32] = "mugwump"
+words[33] = "troublemaker"
+words[34] = "pettifogger"
+words[35] = "rigmarole"
+words[36] = "shenanigan"
+words[37] = "snollygoster"
+words[38] = "gubbins"
+words[39] = "cheesesteak"
+words[40] = "sandwich"
+words[41] = "bumbershoot"
+words[42] = "shoe"
+words[43] = "turtle"
+words[44] = "smock"
+words[45] = "artichoke"
+words[46] = "banana"
+words[47] = "burrito"
+words[48] = "cantaloupe"
+words[49] = "noodle"
+words[50] = "aardvark"
+words[51] = "armadillo"
+words[52] = "bumblebee"
+words[53] = "chachalaca"
+words[54] = "chickadee"
+words[55] = "duck"
+words[56] = "gopher"
+words[57] = "hippopotamus"
+words[58] = "labradoodle"
+words[59] = "polliwog"
+words[60] = "platypus"
+words[61] = "wallaby"
+words[62] = "wombat"
+words[63] = "bauble"
+words[64] = "bungalow"
+words[65] = "monocle"
+words[66] = "mugwump"
+words[67] = "mushroom"
+words[68] = "nimbus"
+words[69] = "nunchuck"
+words[70] = "pantaloon"
+words[71] = "ruckus"
+words[72] = "zamboni"
+words[73] = "database"
+words[74] = "candidate"
+words[75] = "construction"
+words[76] = "investment"
+words[77] = "possibility"
+words[78] = "personality"
+words[79] = "singer"
+words[80] = "boyfriend"
+words[81] = "concept"
+words[82] = "leader"
+words[83] = "thing"
+words[84] = "actor"
+words[85] = "speaker"
+words[86] = "passenger"
+words[87] = "driver"
+words[88] = "cousin"
+words[89] = "bird"
+
+wordsAd[1] = "ambitious"
+wordsAd[2] = "grumpy"
+wordsAd[3] = "nice" 
+wordsAd[4] = "obnoxious" 
+wordsAd[5] = "fancy"
+wordsAd[6] = "lively"
+wordsAd[7] = "victorious"
+wordsAd[8] = "great"
+wordsAd[9] = "zealous"
+wordsAd[10] = "scruffy"
+wordsAd[11] = "delightful"
+wordsAd[12] = "plain"
+wordsAd[13] = "helpless"
+wordsAd[14] = "dazzling"
+wordsAd[15] = "clumsy"
+wordsAd[16] = "proud"
+wordsAd[17] = "scary"
+wordsAd[18] = "elegant"
+wordsAd[19] = "petite"
+wordsAd[20] = "magnificent"
+wordsAd[21] = "uptight"
+wordsAd[22] = "kind"
+wordsAd[23] = "jolly"
+wordsAd[24] = "calm"
+wordsAd[25] = "gorgeous"
+wordsAd[26] = "worried"
+wordsAd[27] = "agreeable"
+wordsAd[28] = "glamorous"
+wordsAd[29] = "handsome"
+wordsAd[30] = "nervous"
+wordsAd[31] = "beautiful"
+wordsAd[32] = "fierce"
+wordsAd[33] = "attractive"
+wordsAd[34] = "gentle"
+wordsAd[35] = "silly"
+wordsAd[36] = "eager"
+wordsAd[37] = "nice"
+wordsAd[38] = "wonderful"
+wordsAd[39] = "dear"
+wordsAd[40] = "brave"
+wordsAd[41] = "bewildered"
+wordsAd[42] = "obnoxious"
+wordsAd[43] = "delightful"
+wordsAd[44] = "lively"
+wordsAd[45] = "thankful"
+wordsAd[46] = "comical"
+wordsAd[47] = "hilarious"
+wordsAd[48] = "fun"
+wordsAd[49] = "merry"
+wordsAd[50] = "entertaining"
+wordsAd[51] = "pleasant"
+wordsAd[52] = "boisterous"
+wordsAd[53] = "amusing"
+
+function BuildArray(size){
+this.length = size
+for (var i = 1; i <= size; i++){
+this[i] = null}
+return this
+}
+
+function PickRandomWord(frm) {
+// Generate a random number between 1 and NumberOfWords
+var rnd = Math.ceil(Math.random() * NumberOfWords)
+var rnd2 = Math.ceil(Math.random() * NumberOfAdWords)
+
+// Display the word inside the text box
+//frm.WordBox.value = "Matt Ryan is a " + wordsAd[rnd2] + " " + words[rnd] 
+document.getElementById('lbltipAddedComment').innerHTML = "Matt Ryan is a " + wordsAd[rnd2] + " " + words[rnd] 
+}
+
+
+
+function addLoadEvent(func) {  
+      var oldonload = window.onload;  
+      if (typeof window.onload != 'function') {  
+        window.onload = func;  
+      } else {  
+        window.onload = function() {  
+          if (oldonload) {  
+            oldonload();  
+          }  
+          func();  
+        }  
+      }  
+    }  
+
+   addLoadEvent(function() {  
+// Generate a random number between 1 and NumberOfWords
+var rnd = Math.ceil(Math.random() * NumberOfWords)
+var rnd2 = Math.ceil(Math.random() * NumberOfAdWords)
+
+// Display the word inside the text box
+//frm.WordBox.value = "Matt Ryan is a " + wordsAd[rnd2] + " " + words[rnd] 
+document.getElementById('lbltipAddedComment').innerHTML = "Matt Ryan is a " + wordsAd[rnd2] + " " + words[rnd] 
+
+    }); 
+
+</script>
+
+</body>
+</html>

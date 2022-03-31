@@ -4,20 +4,32 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
     <body>
-<h1>Random Word Generator</h1>
-
-<FORM NAME="WordForm">  
-<INPUT TYPE=TEXT NAME="WordBox" id="wordbox"><BR>
-<INPUT TYPE=BUTTON VALUE="Generate" onClick="PickRandomWord(document.WordForm);" id="button">
-</FORM>
-
-<p id="demo"></p>
 <script>
 var NumberOfWords = 89
 var NumberOfAdWords = 53
+var NumberOfNames = 15
 
 var words = new BuildArray(NumberOfWords)
-var wordsAd = new BuildArray(NumberOfWords)
+var wordsAd = new BuildArray(NumberOfAdWords)
+var names = new BuildArray(NumberOfNames)
+
+
+names[1] = "John Neuffer"
+names[2] = "Joe Rozansky"
+names[3] = "Richard Phillip"
+names[4] = "Carlos Portillo"
+names[5] = "Mike Specht"
+names[6] = "Steven Young"
+names[7] = "Josh Richter"
+names[8] = "Raphael Ozoude"
+names[9] = "Bob Frazzetta"
+names[10] = "Zach Zeman"
+names[11] = "Matt Ryan"
+names[12] = "Doug Collins"
+names[13] = "Edgar Alberto"
+names[14] = "Phil Hogan"
+names[15] = "Leslie Hoppe"
+    
 
 // Use the following variables to 
 // define your random words:
@@ -172,32 +184,24 @@ this[i] = null}
 return this
 }
 
-function PickRandomWord(frm) {
-// Generate a random number between 1 and NumberOfWords
-var rnd = Math.ceil(Math.random() * NumberOfWords)
-var rnd2 = Math.ceil(Math.random() * NumberOfAdWords)
-
-// Display the word inside the text box
-//frm.WordBox.value = "Matt Ryan is a " + wordsAd[rnd2] + " " + words[rnd] 
-document.getElementById('lbltipAddedComment').innerHTML = "Matt Ryan is a " + wordsAd[rnd2] + " " + words[rnd] 
-}
 
 
     
     $(document).ready(function () {
             var rnd = Math.ceil(Math.random() * NumberOfWords)
 var rnd2 = Math.ceil(Math.random() * NumberOfAdWords)
+var rnd3 = Math.ceil(Math.random() * NumberOfNames)
 
 // Display the word inside the text box
 //frm.WordBox.value = "Matt Ryan is a " + wordsAd[rnd2] + " " + words[rnd] 
-$("#lbltipAddedComment").text("Matt Ryan is a " + wordsAd[rnd2] + " " + words[rnd]); 
+$("#lbltipAddedComment").text(names[rnd3] + " is a " + wordsAd[rnd2] + " " + words[rnd] + "."); 
         });
     
     
 
 </script>
     
-    <label id="lbltipAddedComment">test</label>
+    <label id="lbltipAddedComment" style="font-weight: bold; font-size: 90px">test</label>
 
 </body>
 </html>

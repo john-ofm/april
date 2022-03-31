@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+    <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
     <body>
 <h1>Random Word Generator</h1>
 
@@ -180,31 +183,16 @@ document.getElementById('lbltipAddedComment').innerHTML = "Matt Ryan is a " + wo
 }
 
 
+    
+    $(document).ready(function () {
+            TestFunction("testvalue");
+        });
 
-function addLoadEvent(func) {  
-      var oldonload = window.onload;  
-      if (typeof window.onload != 'function') {  
-        window.onload = func;  
-      } else {  
-        window.onload = function() {  
-          if (oldonload) {  
-            oldonload();  
-          }  
-          func();  
-        }  
-      }  
-    }  
-
-   addLoadEvent(function() {  
-// Generate a random number between 1 and NumberOfWords
-var rnd = Math.ceil(Math.random() * NumberOfWords)
-var rnd2 = Math.ceil(Math.random() * NumberOfAdWords)
-
-// Display the word inside the text box
-//frm.WordBox.value = "Matt Ryan is a " + wordsAd[rnd2] + " " + words[rnd] 
-document.getElementById('lbltipAddedComment').innerHTML = "Matt Ryan is a " + wordsAd[rnd2] + " " + words[rnd] 
-
-    }); 
+        function TestFunction(dispTime) {
+            $("#lbltipAddedComment").text(dispTime);
+        }
+    
+    
 
 </script>
     

@@ -194,16 +194,15 @@ return this
 
 
 
-    
-    $(document).ready(function () {
-            var rnd = Math.ceil(Math.random() * NumberOfWords)
-var rnd2 = Math.ceil(Math.random() * NumberOfAdWords)
-var rnd3 = Math.ceil(Math.random() * NumberOfNames)
+$(document).ready(function () {
 
-// Display the word inside the text box
-//frm.WordBox.value = "Matt Ryan is " + wordsAd[rnd2] + " " + words[rnd] 
-$("#lbltipAddedComment").text(names[rnd3] + " is a " + wordsAd[rnd2] + " " + words[rnd] + "."); 
-        });
+    var rnd = Math.ceil(Math.random() * NumberOfWords)
+    var rnd2 = Math.ceil(Math.random() * NumberOfAdWords)
+    var rnd3 = Math.ceil(Math.random() * NumberOfNames)
+
+    $("#lbltipAddedComment").text(names[rnd3] + " is " + wordsAd[rnd2] + " " + words[rnd] + "."); 
+
+});
     
     
 

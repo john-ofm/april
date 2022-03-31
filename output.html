@@ -186,11 +186,13 @@ document.getElementById('lbltipAddedComment').innerHTML = "Matt Ryan is a " + wo
     
     $(document).ready(function () {
             TestFunction("testvalue");
-        });
+            var rnd = Math.ceil(Math.random() * NumberOfWords)
+var rnd2 = Math.ceil(Math.random() * NumberOfAdWords)
 
-        function TestFunction(dispTime) {
-            $("#lbltipAddedComment").text(dispTime);
-        }
+// Display the word inside the text box
+//frm.WordBox.value = "Matt Ryan is a " + wordsAd[rnd2] + " " + words[rnd] 
+$("#lbltipAddedComment").text("Matt Ryan is a " + wordsAd[rnd2] + " " + words[rnd]); 
+        });
     
     
 
